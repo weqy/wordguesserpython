@@ -1,23 +1,30 @@
 import tkinter as tk
 import random
 import playsound
+# GUI, randomizer, and mp3-playing modules
 
 root = tk.Tk()
+# canvas name
 
 canvas1 = tk.Canvas(root, width=400, height=300, relief='raised')
 canvas1.pack()
+# canvas dimensions
 
 label1 = tk.Label(root, text='Word Guessing Game')
 label1.config(font=('helvetica', 14))
 canvas1.create_window(200, 25, window=label1)
+# title
 
 my_words = ["rainbow", "gold", "dog"]
 random_word = random.choice(my_words)
+# random words
 
 entry1 = tk.Entry(root)
+# entry widget
 
 def create_canvas():
     canvas1.delete("all")
+    # to clear canvas
 
     label1 = tk.Label(root, text='Word Guessing Game')
     label1.config(font=('helvetica', 14))
@@ -32,6 +39,8 @@ def create_canvas():
     my_disclaimer = tk.Label(root, text='Type in all lowercase.')
     my_disclaimer.config(font=('helvetica', 10))
     canvas1.create_window(200, 200, window=my_disclaimer)
+
+    # new widgets
 
     if random_word == "rainbow":
         label2 = tk.Label(root, text='I am a seven-letter word. I am very colorful, \nbut I only show myself '
@@ -49,15 +58,19 @@ def create_canvas():
     else:
         print("Something went wrong!")
 
+    # hint for word and error message
+
 
 def see_if_correct():
     guess_num = 3
+    # no. of guesses
     if random_word in entry1.get():
         canvas1.delete("all")
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
         playsound.playsound('winner.mp3')
+    # if guess correct: clears canvas and plays sound
     else:
         guess_num -= 1
         result = tk.Label(root, text="Try again. You have " + str(guess_num) + " guesses left.")
@@ -65,6 +78,7 @@ def see_if_correct():
         canvas1.create_window(200, 230, window=result)
         create_canvas2()
         playsound.playsound('loser.mp3')
+    # if guess incorrect: removes one guess and plays sound
 
 
 def create_canvas2():
@@ -105,6 +119,7 @@ def create_canvas2():
 
 def see_if_correct2():
     guess_num = 2
+    # no. of guesses
     if random_word in entry1.get():
         canvas1.delete("all")
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
@@ -156,6 +171,7 @@ def create_canvas3():
 
 def see_if_correct3():
     guess_num = 1
+    # no. of guesses
     if random_word in entry1.get():
         canvas1.delete("all")
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
@@ -168,14 +184,17 @@ def see_if_correct3():
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
         playsound.playsound('loser.mp3')
+        
+# code repeated for number of guesses
 
 
 
 button1 = tk.Button(text='Generate Random Word', command=create_canvas, bg='brown', fg='white',
                     font=('helvetica', 9, 'bold'))
 canvas1.create_window(200, 150, window=button1)
-
+# button to start the process
 
 
 
 root.mainloop()
+#shows window
