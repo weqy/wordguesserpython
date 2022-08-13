@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+import playsound
 
 root = tk.Tk()
 
@@ -56,12 +57,14 @@ def see_if_correct():
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
+        playsound.playsound('winner.mp3')
     else:
         guess_num -= 1
         result = tk.Label(root, text="Try again. You have " + str(guess_num) + " guesses left.")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 230, window=result)
         create_canvas2()
+        playsound.playsound('loser.mp3')
 
 
 def create_canvas2():
@@ -107,9 +110,11 @@ def see_if_correct2():
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
+        playsound.playsound('winner.mp3')
     else:
         guess_num -= 1
         create_canvas3()
+        playsound.playsound('loser.mp3')
 
 
 def create_canvas3():
@@ -156,11 +161,13 @@ def see_if_correct3():
         result = tk.Label(root, text="You are correct! Congratulations!\n\n\n :D")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
+        playsound.playsound('winner.mp3')
     else:
         canvas1.delete("all")
         result = tk.Label(root, text="You have no more guesses left. Try again!\n\n\n :(")
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
+        playsound.playsound('loser.mp3')
 
 
 
