@@ -1,10 +1,14 @@
 import tkinter as tk
 import random
 import playsound
+
 # GUI, randomizer, and mp3-playing modules
 
 root = tk.Tk()
 # canvas name
+
+root.title('Word Guesser')
+# title above canvas
 
 canvas1 = tk.Canvas(root, width=400, height=300, relief='raised')
 canvas1.pack()
@@ -13,13 +17,14 @@ canvas1.pack()
 label1 = tk.Label(root, text='Word Guessing Game')
 label1.config(font=('helvetica', 14))
 canvas1.create_window(200, 25, window=label1)
-# title
+# title inside canvas
 
-my_words = ["rainbow", "gold", "dog"]
+my_words = ["rainbow", "dog", "gold"]
 random_word = random.choice(my_words)
 # random words
 
 entry1 = tk.Entry(root)
+
 # entry widget
 
 def create_canvas():
@@ -43,8 +48,8 @@ def create_canvas():
     # new widgets
 
     if random_word == "rainbow":
-        label2 = tk.Label(root, text='I am a seven-letter word. I am very colorful, \nbut I only show myself '
-                                     'in bad weather. \nWhat am I?')
+        label2 = tk.Label(root, text='I am a seven-letter word. I am colorful, \nand I only show myself '
+                                     'in the rain. \nWhat am I?')
         label2.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=label2)
     elif random_word == "gold":
@@ -117,6 +122,7 @@ def create_canvas2():
     else:
         print("Something went wrong!")
 
+
 def see_if_correct2():
     guess_num = 2
     # no. of guesses
@@ -184,9 +190,9 @@ def see_if_correct3():
         result.config(font=('helvetica', 10))
         canvas1.create_window(200, 100, window=result)
         playsound.playsound('loser.mp3')
-        
-# code repeated for number of guesses
 
+
+# code repeated for number of guesses
 
 
 button1 = tk.Button(text='Generate Random Word', command=create_canvas, bg='brown', fg='white',
@@ -195,6 +201,5 @@ canvas1.create_window(200, 150, window=button1)
 # button to start the process
 
 
-
 root.mainloop()
-#shows window
+# shows window
